@@ -22,9 +22,19 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    const projectCollections = client.db("project").collection("myProject");
+    const db = client.db(myProjects);
 
-    app.post("project", async (req, res) => {
+    const skills = db.collection(skill);
+    const projects = db.collection(project);
+    const experience = db.collection(skill);
+    const blogs = db.collection(skill);
+
+    app.post("/skill", async (req, res) => {
+      const skill = req.body;
+      const result = await projectCollections.insertOne(skill);
+      res.send(result);
+    });
+    app.post("/project", async (req, res) => {
       const project = req.body;
       const result = await projectCollections.insertOne(project);
       res.send(result);
