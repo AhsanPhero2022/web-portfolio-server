@@ -31,12 +31,22 @@ async function run() {
 
     app.post("/skill", async (req, res) => {
       const skill = req.body;
-      const result = await projectCollections.insertOne(skill);
+      const result = await skills.insertOne(skill);
       res.send(result);
     });
     app.post("/project", async (req, res) => {
       const project = req.body;
-      const result = await projectCollections.insertOne(project);
+      const result = await projects.insertOne(project);
+      res.send(result);
+    });
+    app.post("/experience", async (req, res) => {
+      const experience = req.body;
+      const result = await experience.insertOne(experience);
+      res.send(result);
+    });
+    app.post("/blog", async (req, res) => {
+      const blog = req.body;
+      const result = await blogs.insertOne(blog);
       res.send(result);
     });
 
